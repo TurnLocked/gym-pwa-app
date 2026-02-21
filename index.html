@@ -3,60 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#6200ea">
-    <title>Gym Tracker PWA</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <meta name="description" content="Track your gym workouts offline">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Gym PWA App</title>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>💪 Gym Tracker</h1>
-            <p class="subtitle">Track Your Progress</p>
-        </header>
-
-        <main>
-            <!-- Add Workout Section -->
-            <section class="card">
-                <h2>Log Workout</h2>
-                <form id="workout-form">
-                    <input type="text" id="exercise" placeholder="Exercise name" required>
-                    <input type="number" id="sets" placeholder="Sets" required>
-                    <input type="number" id="reps" placeholder="Reps" required>
-                    <input type="number" id="weight" placeholder="Weight (lbs)" step="0.5">
-                    <button type="submit" class="btn-primary">Add Workout</button>
-                </form>
-            </section>
-
-            <!-- Workout History -->
-            <section class="card">
-                <h2>Today's Workouts</h2>
-                <div id="workout-list"></div>
-            </section>
-
-            <!-- Stats -->
-            <section class="card stats">
-                <h2>Stats</h2>
-                <div class="stat-grid">
-                    <div class="stat-item">
-                        <span class="stat-number" id="total-workouts">0</span>
-                        <span class="stat-label">Total Workouts</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" id="total-sets">0</span>
-                        <span class="stat-label">Total Sets</span>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <p>Install this app for offline access! 📱</p>
-        </footer>
-    </div>
-
+    <nav>
+        <ul>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#log-workout">Log Workout</a></li>
+            <li><a href="#history">History</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#library">Library</a></li>
+            <li><a href="#settings">Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="dashboard"> <!-- All dashboard features go here --> </section>
+        <section id="log-workout"> <!-- Log workout features go here --> </section>
+        <section id="history"> <!-- History features go here --> </section>
+        <section id="analytics"> <!-- Analytics features go here --> </section>
+        <section id="library"> <!-- Library features go here --> </section>
+        <section id="settings"> <!-- Settings features go here --> </section>
+    </main>
     <script src="app.js"></script>
 </body>
 </html>

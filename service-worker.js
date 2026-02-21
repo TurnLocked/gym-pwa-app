@@ -1,39 +1,14 @@
-const CACHE_NAME = 'gym-tracker-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/style.css',
-  '/app.js',
-  '/manifest.json'
-];
-
-// Install Service Worker
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
-  );
-});
-
-// Fetch from Cache
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => response || fetch(event.request))
-  );
-});
-
-// Update Service Worker
-self.addEventListener('activate', event => {
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
-          }
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open('app-cache').then(function(cache) {
+            return cache.addAll([
+                '/index.html',
+                '/style.css',
+                '/app.js',
+                '/exercises.js',
+                '/charts.js'
+                // Include any additional files needed for caching
+            ]);
         })
-      );
-    })
-  );
+    );
 });
