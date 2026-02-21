@@ -2,29 +2,122 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Gym Tracker</title>
     <link rel="stylesheet" href="style.css">
-    <title>Gym PWA App</title>
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li><a href="#dashboard">Dashboard</a></li>
-            <li><a href="#log-workout">Log Workout</a></li>
-            <li><a href="#history">History</a></li>
-            <li><a href="#analytics">Analytics</a></li>
-            <li><a href="#library">Library</a></li>
-            <li><a href="#settings">Settings</a></li>
-        </ul>
+    <div class="app-container">
+        <!-- Dashboard Tab -->
+        <section id="dashboard" class="tab-content active">
+            <div class="header">
+                <h1>💪 Gym Tracker</h1>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-workouts">0</div>
+                    <div class="stat-label">Workouts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="total-volume">0K</div>
+                    <div class="stat-label">Volume</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="streak">0</div>
+                    <div class="stat-label">🔥 Streak</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Log Tab -->
+        <section id="log" class="tab-content">
+            <div class="header">
+                <h2>➕ Log Workout</h2>
+            </div>
+            <div class="card">
+                <form id="workout-form">
+                    <input type="text" id="exercise" placeholder="Exercise name" required>
+                    <div class="form-row">
+                        <input type="number" id="sets" placeholder="Sets" required min="1">
+                        <input type="number" id="reps" placeholder="Reps" required min="1">
+                        <input type="number" id="weight" placeholder="Weight (lbs)" step="0.5">
+                    </div>
+                    <button type="submit" class="btn-primary">Add Exercise</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Today's Session</h3>
+                <div id="current-session"></div>
+                <button onclick="finishWorkout()" class="btn-success" id="finish-btn" style="display:none;">Finish Workout</button>
+            </div>
+        </section>
+
+        <!-- History Tab -->
+        <section id="history" class="tab-content">
+            <div class="header">
+                <h2>📅 History</h2>
+            </div>
+            <div class="card">
+                <div id="history-list"></div>
+            </div>
+        </section>
+
+        <!-- Analytics Tab -->
+        <section id="analytics" class="tab-content">
+            <div class="header">
+                <h2>📈 Analytics</h2>
+            </div>
+            <div class="card">
+                <h3>🏆 Personal Records</h3>
+                <div id="pr-list"></div>
+            </div>
+        </section>
+
+        <!-- Library Tab -->
+        <section id="library" class="tab-content">
+            <div class="header">
+                <h2>📚 Exercise Library</h2>
+            </div>
+            <div class="card">
+                <input type="text" id="search" placeholder="Search exercises..." oninput="filterExercises()">
+                <div id="exercise-list"></div>
+            </div>
+        </section>
+
+        <!-- Tools Tab -->
+        <section id="tools" class="tab-content">
+            <div class="header">
+                <h2>🔧 Tools</h2>
+            </div>
+            <div class="card">
+                <h3>🧮 1RM Calculator</h3>
+                <input type="number" id="rm-weight" placeholder="Weight lifted" step="0.5">
+                <input type="number" id="rm-reps" placeholder="Reps" min="1">
+                <button onclick="calculate1RM()" class="btn-secondary">Calculate</button>
+                <div id="rm-result"></div>
+            </div>
+            <div class="card">
+                <h3>⚙️ Settings</h3>
+                <button onclick="exportData()" class="btn-secondary">📥 Export Data</button>
+                <button onclick="clearData()" class="btn-danger">🗑️ Clear All Data</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-tab="dashboard">📊</button>
+        <button class="nav-btn" data-tab="log">➕</button>
+        <button class="nav-btn" data-tab="history">📅</button>
+        <button class="nav-btn" data-tab="analytics">📈</button>
+        <button class="nav-btn" data-tab="library">📚</button>
+        <button class="nav-btn" data-tab="tools">🔧</button>
     </nav>
-    <main>
-        <section id="dashboard"> <!-- All dashboard features go here --> </section>
-        <section id="log-workout"> <!-- Log workout features go here --> </section>
-        <section id="history"> <!-- History features go here --> </section>
-        <section id="analytics"> <!-- Analytics features go here --> </section>
-        <section id="library"> <!-- Library features go here --> </section>
-        <section id="settings"> <!-- Settings features go here --> </section>
-    </main>
+
+    <script src="exercises.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
