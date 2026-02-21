@@ -1,45 +1,55 @@
-:root {
-    --primary-dark-grey: #1a1a1a;
-    --secondary-grey: #2d2d2d;
-    --accent-grey: #3a3a3a;
-    --pure-white: #ffffff;
-    --soft-white: #e0e0e0;
-    --pure-black: #000000;
-    --accent-color: #00d4ff;
-    --success-green: #00ff88;
-    --subtle-grey: #888888;
+.container {
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 20px;
+  max-width: 414px;
+  margin: auto;
 }
 
-body {
-    background-color: var(--primary-dark-grey);
-    color: var(--pure-white);
-    font-family: Arial, sans-serif;
-    transition: background-color 0.3s, color 0.3s;
+.card {
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: background-color 0.3s;
+}
+
+.card:hover {
+  background-color: #3d3d3d;
+}
+
+.accent {
+  color: #00d4ff;
 }
 
 nav {
-    background-color: var(--secondary-grey);
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1rem;
+  position: fixed;
+  bottom: env(safe-area-inset-bottom);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background-color: #1a1a1a;
+  padding: 10px 0;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.3);
 }
 
 nav a {
-    color: var(--pure-white);
-    text-decoration: none;
-    padding: 1rem;
+  padding: 12px 20px;
+  min-width: 44px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
 }
 
-section {
-    background-color: var(--secondary-grey);
-    border: 1px solid var(--accent-grey);
-    padding: 2rem;
-    margin: 1rem 0;
+@media (max-width: 414px) {
+  .container {
+    padding: 15px;
+  }
+  .card {
+    padding: 8px;
+  }
+  nav a {
+    padding: 10px;
+  }
 }
-
-/* Add more styles for animations, transitions, and layout here */
